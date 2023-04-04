@@ -1,0 +1,37 @@
+
+
+select
+fp.new_patientid
+,fp.[new_fullname]
+,fp.[new_birthdate]
+,fp.[new_nationalid]
+,fp.[new_gendername]
+,fp.[new_maritalstatusname]
+,fp.[new_diseasename]
+,fp.[new_phoneno]
+,fp.[new_mobile]
+ ,fp.[new_address]
+ ,fp.[new_cityname]
+ ,fp.[new_provincename]
+  ,fp.[new_countryname]
+,FP.new_physicianname
+,FP.new_diseasestartdate as DiseaseStartDate,
+FP.new_height as Initial_NewHeight,
+FP.new_weight as Initial_NewWeight,
+FP.new_lastheight as Last_Height,
+FP.new_lastweight as Last_Weight,
+FP.new_fatherheight as Father_Height,
+FP.new_motherheight as Mother_Height,
+FP.new_presentproductname as Last_Product_Name
+ ,fp.[createdbyname]
+ ,fp.[createdon]
+ ,fp.[modifiedbyname]
+  ,fp.[modifiedon]
+        ,fp.[owneridname]
+      ,fp.[statecodename]
+      ,fp.[statuscodename]
+	    FROM [Medical_MSCRM].[dbo].[Filterednew_patient] as fp
+		inner join [Medical_MSCRM].[rep].[Medchange_Cinnatropin] as mc
+		on fp.new_patientid=mc.new_patient
+		where fp.statuscodename ='Active'
+
